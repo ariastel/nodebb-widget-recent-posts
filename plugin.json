@@ -1,0 +1,25 @@
+{
+  "id": "nodebb-widget-recent-posts",
+  "name": "NodeBB Recent Posts Widget",
+  "description": "NodeBB Widget that displays a recent posts",
+  "url": "https://github.com/ariastel/nodebb-widget-twitch",
+  "main": "./library.js",
+  "hooks": [
+    {
+      "hook": "static:app.load",
+      "method": "init"
+    },
+    {
+      "hook": "filter:widgets.getWidgets",
+      "method": "defineWidgets"
+    },
+    {
+      "hook": "filter:widget.render:aa_recentposts",
+      "method": "renderRecentPostsWidget"
+    }
+  ],
+  "less": [
+    "less/post.less"
+  ],
+  "templates": "templates"
+}
