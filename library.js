@@ -64,7 +64,7 @@ function handleSocketIO() {
 
 		for (const post of posts) {
 			post.category = categoryMap[post.cid] ?? { cid: post.cid, name: '???' };
-			post.teaser = getContentTeaser(post.content);
+			handlePostContent(post);
 		}
 
 		return posts;
