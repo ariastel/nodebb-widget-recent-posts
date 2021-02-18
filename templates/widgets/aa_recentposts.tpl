@@ -31,7 +31,6 @@
 					}
 
 					socket.emit('plugins.AARecentPostsWidget.getRecentPosts', data.posts, function (err, postsUpd) {
-						console.log(postsUpd);
 						app.parseAndTranslate('partials/posts', {
 							relative_path: config.relative_path,
 							posts: postsUpd
@@ -54,7 +53,6 @@
 
 			function processHtml(html) {
 				if ($.timeago) {
-					console.log(html.find('.timeago'))
 					html.find('.timeago').timeago();
 				}
 			}
