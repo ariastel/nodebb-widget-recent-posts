@@ -1,8 +1,10 @@
 'use strict';
 
+const _ = require.main.require('lodash');
 const nconf = require.main.require('nconf');
-const posts = require.main.require('./src/posts');
 const categories = require.main.require('./src/categories');
+const posts = require.main.require('./src/posts');
+const SocketPlugins = require.main.require('./src/socket.io/plugins');
 const utils = require.main.require('./src/utils');
 
 let app;
@@ -10,15 +12,16 @@ const Widget = {};
 
 Widget.init = async function (params) {
 	app = params.app;
+	handleSocketIO();
 };
 
 Widget.defineWidgets = async function (widgets) {
 	return widgets.concat([
 		{
 			widget: 'aa_recentposts',
-			name: 'Recent posts',
+			name: 'Ariastel: Recent Posts',
 			description: 'Displays a Recent posts.',
-			content: await app.renderAsync('admin/recentposts', {}),
+			content: await app.renderAsync('admin/aa_recentposts', {}),
 		}
 	]);
 }
@@ -46,9 +49,27 @@ Widget.renderRecentPostsWidget = async function (widget) {
 		relative_path: nconf.get('relative_path'),
 	};
 
-	widget.html = await app.renderAsync('widgets/recentposts', data);
+	widget.html = await app.renderAsync('widgets/aa_recentposts', data);
 	return widget;
 };
+
+
+function handleSocketIO() {
+	SocketPlugins.AARecentPostsWidget = {};
+	SocketPlugins.AARecentPostsWidget.getRecentPosts = async function (socket, posts) {
+
+		const cids = _.uniq(posts.map(post => post.cid));
+		const categoriesData = await categories.getCategoriesFields(cids, ['cid', 'name']);
+		const categoryMap = _.keyBy(categoriesData, 'cid');
+
+		for (const post of posts) {
+			post.category = categoryMap[post.cid] ?? { cid: post.cid, name: '???' };
+			post.teaser = getContentTeaser(post.content);
+		}
+
+		return posts;
+	}
+}
 
 function filterPost(post) {
 	return !post.isNSFW && !post.deleted;

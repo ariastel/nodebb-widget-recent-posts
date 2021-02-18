@@ -21,5 +21,6 @@
   "less": [
     "less/post.less"
   ],
-  "templates": "templates"
+  "templates": "templates",
+  "languages": "languages"
 }
