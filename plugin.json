@@ -2,7 +2,7 @@
   "id": "nodebb-widget-recent-posts",
   "name": "NodeBB Recent Posts Widget",
   "description": "NodeBB Widget that displays a recent posts",
-  "url": "https://github.com/ariastel/nodebb-widget-twitch",
+  "url": "https://github.com/ariastel/nodebb-widget-recent-posts",
   "main": "./library.js",
   "hooks": [
     {
