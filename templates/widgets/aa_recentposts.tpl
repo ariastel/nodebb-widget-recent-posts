@@ -1,6 +1,6 @@
 <div class="aa_recent-replies">
 	<ul id="aa_recent_posts" data-numposts="{numPosts}" data-cid="{cid}">
-		<!-- IMPORT partials/posts.tpl -->
+		<!-- IMPORT partials/aa_recentposts-item.tpl -->
 	</ul>
 	<a href="{relative_path}/recent" class="aa_recent_posts">[[recent-posts:more]]>></a>
 </div>
@@ -31,7 +31,7 @@
 					}
 
 					socket.emit('plugins.AARecentPostsWidget.getRecentPosts', data.posts, function (err, postsUpd) {
-						app.parseAndTranslate('partials/posts', {
+						app.parseAndTranslate('partials/aa_recentposts-item', {
 							relative_path: config.relative_path,
 							posts: postsUpd
 						}, function (html) {
