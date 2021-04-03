@@ -1,3 +1,7 @@
+@black-color: #000;
+@gray-color: #ADADAD;
+@brand-color: #EB4141;
+
 #aa_recent_posts {
   list-style: none;
   margin: 0;
@@ -6,7 +10,12 @@
 
 .aa_widget-post {
 
+  position: relative;
   margin-bottom: 12px;
+
+  & a {
+    z-index: 1;
+  }
 
   &__header {
     display: flex;
@@ -23,7 +32,7 @@
 
   &__time,
   &__category {
-    color: #ADADAD;
+    color: @gray-color;
   }
 
   &__time {
@@ -43,12 +52,39 @@
 
   &__teaser {
     margin-top: 4px;
-    color: #000;
+    color: @black-color;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 0;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background-color: @brand-color;
+      transition: width ease-in-out 200ms;
+    }
+
+    &:hover {
+      &:after {
+        width: 30%;
+      }
+    }
   }
 }
 
 .aa_recent_posts {
-  color: #000;
+  color: @black-color;
   text-transform: uppercase;
   font-weight: bold;
   margin-left: auto;
@@ -63,6 +99,6 @@
     right: 0;
     bottom: -4px;
     height: 1px;
-    background-color: #EB4141;
+    background-color: @brand-color;
   }
 }

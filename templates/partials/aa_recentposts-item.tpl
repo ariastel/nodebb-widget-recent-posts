@@ -1,5 +1,5 @@
 <!-- BEGIN posts -->
-<li data-pid="{posts.pid}" class="clearfix aa_widget-post">
+<li data-pid="{posts.pid}" class="aa_widget-post">
 	<div class="aa_widget-post__header">
     <a href="<!-- IF posts.user.userslug -->{relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->" class="aa_widget-post__author">
 
