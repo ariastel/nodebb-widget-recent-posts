@@ -1,6 +1,6 @@
 {
   "name": "@ariastel/nodebb-widget-recent-posts",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "NodeBB Widget that displays a recent posts",
   "main": "library.js",
   "repository": "git://github.com/ariastel/nodebb-widget-recent-posts.git",
