@@ -15,7 +15,6 @@
 
   & a {
     z-index: 1;
-    line-break: anywhere;
   }
 
   &__header {
@@ -34,26 +33,23 @@
   &__time,
   &__category {
     color: @gray-color;
+    font-size: 10px;
   }
 
   &__time {
-    font-size: 10px;
     margin-left: 8px;
   }
 
   &__category {
-    font-size: 12px;
+    max-width: 40%;
     margin-left: auto;
     text-align: right;
-  }
-
-  &__time {
-    font-size: 10px;
   }
 
   &__teaser {
     margin-top: 4px;
     color: @black-color;
+    line-break: anywhere;
 
     &:before {
       content: "";
